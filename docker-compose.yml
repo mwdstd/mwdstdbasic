@@ -1,0 +1,61 @@
+version: '3'
+services:
+  nginx:
+    image: mwdstd/mwdstdui
+    build: 
+      context: ./mwdstdui
+    volumes:
+      - ./compose/nginx.conf:/etc/nginx/templates/default.conf.template
+    ports:
+      - '80:${NGINX_PORT}'
+    environment:
+      - NGINX_PORT
+      - API_URL=http://rest:${API_PORT}/
+    depends_on:
+      - rest
+  rest:
+    image: mwdstd/mwdstdb
+    environment:
+      - API_PORT
+      - REDIS_URL=redis://redis/
+      - CALC_URL=http://calc:${CALC_PORT}/
+      - CPA_MONKEY_DENY=CELERY.SEND_TASK,ALL_BACKENDS
+      - MONGO_DB_URL=mongodb://mongo
+      - MONGO_DB_NAME
+    build: 
+      context: ./mwdstdb
+    command: --bind 0.0.0.0:${API_PORT}
+    depends_on:
+      - redis
+      - mongo
+  worker:
+    image: mwdstd/mwdstdb
+    environment:
+      - API_PORT
+      - REDIS_URL=redis://redis/
+      - CALC_URL=http://calc:${CALC_PORT}/
+      - CPA_MONKEY_DENY=CELERY.SEND_TASK,ALL_BACKENDS
+      - MONGO_DB_URL=mongodb://mongo
+      - MONGO_DB_NAME
+    entrypoint: ["celery", "worker", "--app=mwdstorage.tasks", "-P", "celery_pool_asyncio:TaskPool"]
+    depends_on:
+      - redis
+      - mongo
+      - rest
+  calc:
+    image: mwdstd/mwdstdcore
+    build: 
+      context: ./mwdstdcore
+    command: --bind 0.0.0.0:${CALC_PORT} --timeout 0
+  redis:
+    image: redis
+  mongo:
+    image: mongo
+    ports:
+      - '27017:27017'
+    command: --replSet rs0
+    volumes:
+      - ./compose/mongo_init.js:/docker-entrypoint-initdb.d/1_init.js
+      - mwdstd_data:/data/db
+volumes:
+  mwdstd_data: {}

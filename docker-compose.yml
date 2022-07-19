@@ -37,7 +37,7 @@ services:
       - CPA_MONKEY_DENY=CELERY.SEND_TASK,ALL_BACKENDS
       - MONGO_DB_URL=mongodb://mongo
       - MONGO_DB_NAME
-    entrypoint: ["celery", "worker", "--app=mwdstorage.tasks", "-P", "celery_pool_asyncio:TaskPool"]
+    entrypoint: ["celery", "worker", "--app=mwdstdb.tasks", "-P", "celery_pool_asyncio:TaskPool"]
     depends_on:
       - redis
       - mongo

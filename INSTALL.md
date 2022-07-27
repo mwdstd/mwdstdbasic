@@ -2,7 +2,7 @@
 
 These are example installation instuctions on AWS EC2 free-tier instance (t2.micro, Amazon Linux 2 AMI) 
 
-# The installation instructions do not include setting up HTTPS-connection. Please note that without setting up a secure connection, the transmitted data is not encrypted and its confidentiality is not guaranteed.
+## WARNING: THE INSTALLATION INSTRUCTIONS DO NOT INCLUDE SETTING UP HTTPS CONNECTION. PLEASE NOTE, WITHOUT THE SECURE CONNECTION, THE TRANSMITTED DATA IS NOT ENCRYPTED AND ITS CONFIDENTIALITY IS NOT GUARANTEED.
 
 1. Prepare the system
    1. Create swap file (https://aws.amazon.com/ru/premiumsupport/knowledge-center/ec2-memory-swap-file/)

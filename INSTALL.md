@@ -1,6 +1,8 @@
 # Installation
 
-These are example installation instuctions on AWS EC2 free-tier instance (t2.micro, Amazon Linux 2 AMI) 
+These are example installation instuctions on AWS EC2 free-tier instance (t2.micro, Amazon Linux 2 AMI).
+
+A detailed AWS installation video: https://mwdstd.com/aws-installation-video-guide/
 
 ### WARNING: THE INSTALLATION INSTRUCTIONS DO NOT INCLUDE SETTING UP HTTPS CONNECTION. PLEASE NOTE, WITHOUT THE SECURE CONNECTION, THE TRANSMITTED DATA IS NOT ENCRYPTED AND ITS CONFIDENTIALITY IS NOT GUARANTEED.
 

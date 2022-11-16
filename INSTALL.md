@@ -25,15 +25,6 @@ A detailed AWS installation video: https://mwdstd.com/aws-installation-video-gui
        git clone https://github.com/mwdstd/mwdstdbasic.git
        cd mwdstdbasic
 
-1. Clone submodules
-
-       git submodule init
-       git submodule update
-
-1. Build the system 
-
-       sudo /usr/local/bin/docker-compose build
-
 1. Start the system 
 
        sudo /usr/local/bin/docker-compose up -d

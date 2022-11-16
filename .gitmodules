@@ -1,9 +1,0 @@
-[submodule "mwdstdcore"]
-	path = mwdstdcore
-	url = https://github.com/mwdstd/mwdstdcore.git
-[submodule "mwdstdb"]
-	path = mwdstdb
-	url = https://github.com/mwdstd/mwdstdb.git
-[submodule "mwdstdui"]
-	path = mwdstdui
-	url = https://github.com/mwdstd/mwdstdui.git

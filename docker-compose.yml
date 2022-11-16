@@ -2,8 +2,6 @@ version: '3'
 services:
   nginx:
     image: mwdstd/mwdstdui
-    build: 
-      context: ./mwdstdui
     volumes:
       - ./compose/nginx.conf:/etc/nginx/templates/default.conf.template
     ports:
@@ -22,8 +20,6 @@ services:
       - CPA_MONKEY_DENY=CELERY.SEND_TASK,ALL_BACKENDS
       - MONGO_DB_URL=mongodb://mongo
       - MONGO_DB_NAME
-    build: 
-      context: ./mwdstdb
     command: --bind 0.0.0.0:${API_PORT}
     depends_on:
       - redis
@@ -44,8 +40,6 @@ services:
       - rest
   calc:
     image: mwdstd/mwdstdcore
-    build: 
-      context: ./mwdstdcore
     command: --bind 0.0.0.0:${CALC_PORT} --timeout 0
   redis:
     image: redis

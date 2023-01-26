@@ -33,3 +33,23 @@ A detailed AWS installation video: https://mwdstd.com/aws-installation-video-gui
 
        login: super@user
        password: superuser
+       
+# Update
+
+1. Stop the system
+
+       sudo /usr/local/bin/docker-compose down
+
+1. Update components
+
+       sudo docker pull mwdstd/mwdstdb
+       sudo docker pull mwdstd/mwdstdui
+       sudo docker pull mwdstd/mwdstdcore
+
+1. Start the system 
+
+       sudo /usr/local/bin/docker-compose up -d
+
+1. (Optional) Remove old docker images
+
+       sudo docker image prune -f

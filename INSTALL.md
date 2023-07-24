@@ -5,6 +5,7 @@ These are example installation instuctions on AWS EC2 free-tier instance (t2.mic
 A detailed AWS installation video: https://mwdstd.com/aws-installation-video-guide/
 
 ### WARNING: THE INSTALLATION INSTRUCTIONS DO NOT INCLUDE SETTING UP HTTPS CONNECTION. PLEASE NOTE, WITHOUT THE SECURE CONNECTION, THE TRANSMITTED DATA IS NOT ENCRYPTED AND ITS CONFIDENTIALITY IS NOT GUARANTEED.
+#### Please, keep in mind, the platform uses HTTP server-side events (SSE) to provide update of the Web UI in real-time. When deploying behind a reverse proxy, be sure to disable HTTP buffering to avoid losing update events.
 
 1. Prepare the system
    1. Create swap file (https://aws.amazon.com/ru/premiumsupport/knowledge-center/ec2-memory-swap-file/)
